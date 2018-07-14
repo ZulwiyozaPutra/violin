@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <title>{{ .Title }}</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('input[name=animalSelect]').change(function () {
+        $('form').submit();
+      });
+    });
+  </script>
+
+  {{ with $1 := .RadioButtons }}
+    <form action="/selected" method="POST">
+      <legend>Which do you prefer?</legend>
+      {{ range $1 }}
+      <input type="radio" name={{.Name}} value={{.Value}} {{if .IsDisabled}}disabled{{end}} {{if .IsChecked}}checked{{end}}> {{ .Text }} {{ end }}
+    </form>
+  {{ end }}
+  
+  {{ with $2 := .Answer }}
+    <p>Your answer is {{ $2 }}</p>
+  {{ end }}
+</body>
+
+</html>
