@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-// Index
+// Index endpoint
 func Index(writer http.ResponseWriter, request *http.Request) {
 	fmt.Fprintf(writer, "Welcome to the violin")
 }

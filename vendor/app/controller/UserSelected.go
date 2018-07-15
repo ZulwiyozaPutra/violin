@@ -6,6 +6,7 @@ import (
 	"app/shared/view"
 )
 
+// UserSelected endpoint
 func UserSelected(writer http.ResponseWriter, request *http.Request) {
 	request.ParseForm()
 	selectedView := view.View{
