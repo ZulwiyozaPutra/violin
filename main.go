@@ -4,15 +4,11 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/zulwiyozaputra/violin/router"
+	"app/shared/router"
+	"app/route"
 )
 
-// ROUTES consists of slices of Routes
-var ROUTES = []router.Route{
-	router.Route{Path: "/", Handler: index},
-	router.Route{Path: "/select", Handler: userSelection},
-	router.Route{Path: "/selected", Handler: userSelected},
-}
+
 
 func getPort() string {
 	port := os.Getenv("PORT")
@@ -24,6 +20,6 @@ func getPort() string {
 
 func main() {
 	port := getPort()
-	router.HandleRoutes(ROUTES)
+	router.HandleRoutes(route.Routes)
 	http.ListenAndServe(port, nil)
 }
